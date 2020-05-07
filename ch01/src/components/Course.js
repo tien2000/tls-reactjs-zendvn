@@ -30,7 +30,7 @@ import Lesson from './Lesson';
 class Course extends Component{
     showButtonFree() {
         const isFree = this.props.free;
-        console.log("isFree", isFree);
+        // console.log("isFree", isFree);
         if (isFree) {
           return <div className="panel-footer">                            
                     <button type="button" className="btn btn-info">View</button>                            
