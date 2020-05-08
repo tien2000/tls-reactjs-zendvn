@@ -28,12 +28,32 @@ import Lesson from './Lesson';
 
 // Cách 2
 class Course extends Component{
+    constructor(props){
+        super(props);
+        this.handleClick3 = this.handleClick3.bind(this);
+    }
+
+    handleClick1() {
+        alert("View 1");
+    }
+
+    handleClick2(content) {
+        alert(content);
+    }
+
+    handleClick3() {
+        alert(this.props.name);
+    }
+
     showButtonFree() {
         const isFree = this.props.free;
-        // console.log("isFree", isFree);
         if (isFree) {
-          return <div className="panel-footer">                            
-                    <button type="button" className="btn btn-info">View</button>                            
+          return <div className="panel-footer">
+                    <div className="btn-group">
+                        <button onClick={this.handleClick1} type="button" className="btn btn-danger">View 1</button>
+                        <button onClick={() => this.handleClick2("View 2")} type="button" className="btn btn-success">View 2</button>
+                        <button onClick={this.handleClick3} type="button" className="btn btn-info">View 3</button>
+                    </div>                    
                 </div>;
         }
         return "";
