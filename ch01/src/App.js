@@ -21,7 +21,7 @@ class App extends Component{
 			{
 				name: 'ReactJS',
 				time: '30h',
-				free: true,
+				free: false,
 				desc: 'ReactJS is very crazy!!!'
 			},
 			{
@@ -33,7 +33,7 @@ class App extends Component{
 			{
 				name: 'NodeJS',
 				time: '90h',
-				free: false
+				free: true
 			}
 		];
 
