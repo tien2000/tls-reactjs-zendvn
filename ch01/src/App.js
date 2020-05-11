@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
+// import Course from './components/Course';
 import Course from './components/Course';
+import Lifecycle from './components/Lifecycle';
 
 // function App() {
 // 	return (
@@ -44,7 +46,8 @@ class App extends Component{
 		return(
 			<div>
 				<div className="row">
-					{courseItems}
+					{/* {courseItems} */}
+					<Lifecycle />
 				</div>
 			</div>
 		);
