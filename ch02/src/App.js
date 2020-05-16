@@ -3,8 +3,20 @@ import Title 	from './components/Title';
 import Control 	from './components/Control';
 import Form 	from './components/Form';
 import List 	from './components/List';
+
+import tasks 	from './mocks/tasks';
 class App extends Component{
-	render(){	
+	constructor(props){
+		super(props);
+	
+		this.state = {
+			items : tasks
+		};
+	};
+	
+	render(){
+		let items = this.state.items;
+		
 		return(
 			<div>
 				{/* TITLE: START */}
@@ -20,7 +32,7 @@ class App extends Component{
 				{/* FORM: END */}
 
 				{/* LIST: START */}
-					<List />
+					<List items={items}></List>
 				{/* LIST: END */}
 			</div>
 		);

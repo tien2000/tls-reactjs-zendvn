@@ -2,7 +2,22 @@ import React, { Component } from 'react';
 import Item from './Item'
 
 class List extends Component{
-	render(){	
+	constructor(props){
+		super(props);
+	
+		this.state = {
+			
+		};
+		console.log(this.props.items);
+		
+	};
+	
+	render(){
+		const items = this.props.items;
+		const elmItem = items.map((items, index) =>{
+			return (<Item key={index} />);
+		});
+
 		return(
 			<div className="panel panel-success">
 				<div className="panel-heading">
@@ -18,7 +33,7 @@ class List extends Component{
 						</tr>
 					</thead>
 					<tbody>
-						<Item/>
+						{elmItem}
 					</tbody>
 				</table>
 			</div>
