@@ -15,7 +15,7 @@ class List extends Component{
 	render(){
 		const items = this.props.items;
 		const elmItem = items.map((items, index) =>{
-			return (<Item key={index} />);
+			return (<Item key={index} item={items} index={index} />);
 		});
 
 		return(

@@ -6,11 +6,11 @@ class Sort extends Component{
 				<div className="dropdown">
 					<button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" > Sort by <span className="caret" /></button>
 					<ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
-						<li> <a href="#">Name ASC</a> </li>
-						<li> <a href="#">Name DESC</a> </li>
+						<li> <a href="http://localhost:3000/">Name ASC</a> </li>
+						<li> <a href="http://localhost:3000/">Name DESC</a> </li>
 						<li role="separator" className="divider" />
-						<li> <a href="#">Level ASC</a> </li>
-						<li> <a href="#">Level DESC</a> </li>
+						<li> <a href="http://localhost:3000/">Level ASC</a> </li>
+						<li> <a href="http://localhost:3000/">Level DESC</a> </li>
 					</ul>
 					<span className="label label-success label-medium">Name - ASC</span>
 				</div>

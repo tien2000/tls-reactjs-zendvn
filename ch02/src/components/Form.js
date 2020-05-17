@@ -6,11 +6,11 @@ class Form extends Component{
 				<div className="col-md-offset-7 col-md-5">
 					<form className="form-inline">
 						<div className="form-group">
-							<label className="sr-only" htmlFor> label </label>
+							<label className="sr-only" htmlFor=""> label </label>
 							<input name="task_name" type="text" className="form-control" placeholder="Task Name" />
 						</div>
 						<div className="form-group">
-							<label className="sr-only" htmlFor> label </label>
+							<label className="sr-only" htmlFor=""> label </label>
 							<select name="task_level" className="form-control" required="required">
 								<option value="{0}">Small</option>
 								<option value="{1}">Medium</option>
