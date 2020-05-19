@@ -10,12 +10,34 @@ class App extends Component{
 		super(props);
 	
 		this.state = {
-			items : tasks
+			items : tasks,
+			isShowForm : false
 		};
+
+		this.handleToggleForm = this.handleToggleForm.bind(this);
+		this.closeForm = this.closeForm.bind(this);
 	};
+
+	handleToggleForm(){
+		this.setState({
+			isShowForm : !this.state.isShowForm
+		})
+	}
+
+	closeForm(){
+		this.setState({
+			isShowForm : false
+		})
+	}
 	
 	render(){
-		let items = this.state.items;
+		let items 		= this.state.items;
+		let isShowForm 	= this.state.isShowForm;
+		let elmForm 	= null;
+
+		if (isShowForm) {
+			elmForm = <Form onClickCancel={this.closeForm} />;
+		}
 		
 		return(
 			<div>
@@ -24,11 +46,11 @@ class App extends Component{
 				{/* TITLE: END */}
 				
 				{/* CONTROL: (SEARCH - SORT - ADD): START */}
-					<Control />				
+					<Control onClickAdd={this.handleToggleForm} isShowForm={isShowForm} />				
 				{/* CONTROL: (SEARCH - SORT - ADD): END */}
 
 				{/* FORM: START */}
-					<Form />
+					{elmForm}
 				{/* FORM: END */}
 
 				{/* LIST: START */}
