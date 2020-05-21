@@ -26,7 +26,7 @@ class Control extends Component{
 		return(
 			<div className="row">
 				{/* SEARCH: START */}
-					<Search/>
+					<Search onClickGo={this.props.onClickSearchGo}/>
 				{/* SEARCH: END */}
 
 				{/* SORT: START */}

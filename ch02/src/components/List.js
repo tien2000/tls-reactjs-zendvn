@@ -8,8 +8,7 @@ class List extends Component{
 		this.state = {
 			
 		};
-		console.log(this.props.items);
-		
+		// console.log(this.props.items);		
 	};
 	
 	render(){
