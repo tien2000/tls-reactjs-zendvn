@@ -39,7 +39,7 @@ class App extends Component{
 	}
 	
 	render(){
-		console.log(this.state.strSearch);
+		console.log('strSearch: ' + this.state.strSearch);
 		
 		let items 		= this.state.items;
 		let isShowForm 	= this.state.isShowForm;
