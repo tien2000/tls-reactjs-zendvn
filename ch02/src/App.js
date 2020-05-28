@@ -3,7 +3,7 @@ import Title 	from './components/Title';
 import Control 	from './components/Control';
 import Form 	from './components/Form';
 import List 	from './components/List';
-import {filter, includes, orderBy as funcOrderBy} from "lodash";
+import {filter, includes, orderBy as funcOrderBy, remove} from "lodash";
 
 import tasks 	from './mocks/tasks';
 class App extends Component{
@@ -22,6 +22,7 @@ class App extends Component{
 		this.closeForm 			= this.closeForm.bind(this);
 		this.handleSearch 		= this.handleSearch.bind(this);
 		this.handleSort 		= this.handleSort.bind(this);
+		this.handleDelete 		= this.handleDelete.bind(this);
 	};
 
 	handleToggleForm(){
@@ -47,6 +48,17 @@ class App extends Component{
 			orderBy : orderBy,
 			orderDir: orderDir
 		})
+	}
+
+	handleDelete(id){
+		let items = this.state.items;
+		remove(items, (item) => {
+			return item.id === id;
+		});
+
+		this.setState({
+			items: items
+		});
 	}
 	
 	render(){
@@ -108,7 +120,10 @@ class App extends Component{
 				{/* FORM: END */}
 
 				{/* LIST: START */}
-					<List items={items}></List>
+					<List
+						items={items}
+						onClickDelete={this.handleDelete}
+					/>					
 				{/* LIST: END */}
 			</div>
 		);

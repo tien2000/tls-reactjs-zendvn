@@ -6,6 +6,8 @@ class Item extends Component{
 		this.state = {
 			
 		};
+
+		this.handleDelete = this.handleDelete.bind(this);
 	};
 
 	showElementLevel(level){
@@ -18,6 +20,10 @@ class Item extends Component{
 		}
 		return elmLevel;
 	};
+
+	handleDelete(id){
+		this.props.onClickDelete(id);
+	}
 	
 	render(){
 		const {item}  = this.props; 
@@ -30,7 +36,7 @@ class Item extends Component{
 				<td style={{ width: "20%" }} className="text-center">{this.showElementLevel(item.level)}</td>
 				<td>
 					<button type="button" className="btn btn-warning">Edit</button>
-					<button type="button" className="btn btn-danger">Delete</button>
+					<button onClick={() => this.handleDelete(item.id)} type="button" className="btn btn-danger">Delete</button>
 				</td>
 			</tr>
 		);

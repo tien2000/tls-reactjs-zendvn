@@ -8,13 +8,12 @@ class List extends Component{
 		this.state = {
 			
 		};
-		// console.log(this.props.items);		
 	};
 	
 	render(){
 		const items = this.props.items;
 		const elmItem = items.map((items, index) =>{
-			return (<Item key={index} item={items} index={index} />);
+			return (<Item key={index} item={items} index={index} onClickDelete={this.props.onClickDelete} />);
 		});
 
 		return(
