@@ -7,7 +7,8 @@ class Item extends Component{
 			
 		};
 
-		this.handleDelete = this.handleDelete.bind(this);
+		this.handleDelete 	= this.handleDelete.bind(this);
+		this.handleEdit 	= this.handleEdit.bind(this);
 	};
 
 	showElementLevel(level){
@@ -24,6 +25,11 @@ class Item extends Component{
 	handleDelete(id){
 		this.props.onClickDelete(id);
 	}
+
+	handleEdit(item){
+		this.props.onClickEdit(item);
+	}
+	
 	
 	render(){
 		const {item}  = this.props; 
@@ -35,7 +41,7 @@ class Item extends Component{
 				<td>{item.name}</td>
 				<td style={{ width: "20%" }} className="text-center">{this.showElementLevel(item.level)}</td>
 				<td>
-					<button type="button" className="btn btn-warning">Edit</button>
+					<button onClick={() => this.handleEdit(item)}  type="button" className="btn btn-warning">Edit</button>
 					<button onClick={() => this.handleDelete(item.id)} type="button" className="btn btn-danger">Delete</button>
 				</td>
 			</tr>

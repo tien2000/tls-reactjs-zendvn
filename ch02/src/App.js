@@ -11,11 +11,12 @@ class App extends Component{
 		super(props);
 	
 		this.state = {
-			items 		: tasks,
-			isShowForm  : false,
-			strSearch   : '',
-			orderBy		: 'name',
-			orderDir	: 'asc'
+			items 			: tasks,
+			isShowForm  	: false,
+			strSearch   	: '',
+			orderBy			: 'name',
+			orderDir		: 'asc',
+			itemSelected	: null
 		};
 
 		this.handleToggleForm 	= this.handleToggleForm.bind(this);
@@ -24,7 +25,8 @@ class App extends Component{
 		this.handleSort 		= this.handleSort.bind(this);
 		this.handleDelete 		= this.handleDelete.bind(this);
 		this.handleSubmit 		= this.handleSubmit.bind(this);
-	};
+		this.handleEdit 		= this.handleEdit.bind(this);
+	}
 
 	handleToggleForm(){
 		this.setState({
@@ -62,6 +64,15 @@ class App extends Component{
 		});
 	}
 
+	handleEdit(item){
+		this.setState({
+			itemSelected	: item,
+			isShowForm  	: true
+		});
+		console.log(item);
+		
+	}
+
 	handleSubmit(item){
 		console.log(item);
 
@@ -84,10 +95,10 @@ class App extends Component{
 		let elmForm 	 = null;
 		let itemsOrigin  = [...this.state.items];
 		let items 		 = [];
-		let {isShowForm, strSearch, orderBy, orderDir} = this.state;
+		let {isShowForm, strSearch, orderBy, orderDir, itemSelected} = this.state;
 
 		if (isShowForm) {
-			elmForm = <Form onClickSubmit={this.handleSubmit} onClickCancel={this.closeForm} />;
+			elmForm = <Form itemSelected={itemSelected} onClickSubmit={this.handleSubmit} onClickCancel={this.closeForm} />;
 		}
 
 		// console.log(orderBy + ' - ' + orderDir);
@@ -138,6 +149,7 @@ class App extends Component{
 
 				{/* LIST: START */}
 					<List
+						onClickEdit={this.handleEdit}
 						items={items}
 						onClickDelete={this.handleDelete}
 					/>					

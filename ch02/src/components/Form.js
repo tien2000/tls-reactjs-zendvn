@@ -11,7 +11,7 @@ class Form extends Component{
 		
 		this.handleCancel = this.handleCancel.bind(this);
 		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);		
 	};
 
 	handleCancel(){
