@@ -4,8 +4,8 @@ import Control 	from './components/Control';
 import Form 	from './components/Form';
 import List 	from './components/List';
 import {filter, includes, orderBy as funcOrderBy, remove} from "lodash";
-
 import tasks 	from './mocks/tasks';
+const { v4: uuidv4 } = require('uuid');
 class App extends Component{
 	constructor(props){
 		super(props);
@@ -23,6 +23,7 @@ class App extends Component{
 		this.handleSearch 		= this.handleSearch.bind(this);
 		this.handleSort 		= this.handleSort.bind(this);
 		this.handleDelete 		= this.handleDelete.bind(this);
+		this.handleSubmit 		= this.handleSubmit.bind(this);
 	};
 
 	handleToggleForm(){
@@ -60,6 +61,22 @@ class App extends Component{
 			items: items
 		});
 	}
+
+	handleSubmit(item){
+		console.log(item);
+
+		let {items} = this.state;
+		items.push({
+			id		: uuidv4(),
+			name	: item.name,
+			level	: +item.level
+		});
+
+		this.setState({
+			items : items,
+			isShowForm: false
+		});
+	}
 	
 	render(){
 		// console.log('strSearch: ' + this.state.strSearch);
@@ -70,7 +87,7 @@ class App extends Component{
 		let {isShowForm, strSearch, orderBy, orderDir} = this.state;
 
 		if (isShowForm) {
-			elmForm = <Form onClickCancel={this.closeForm} />;
+			elmForm = <Form onClickSubmit={this.handleSubmit} onClickCancel={this.closeForm} />;
 		}
 
 		// console.log(orderBy + ' - ' + orderDir);

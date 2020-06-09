@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
-import StudyForm from './components/StudyForm';
+import App from './App';
+// import StudyForm from './components/StudyForm';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <StudyForm />
+    <App />
+    {/* <StudyForm /> */}
   </React.StrictMode>,
   document.getElementById('main-content')
 );
