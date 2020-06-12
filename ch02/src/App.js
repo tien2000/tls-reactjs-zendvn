@@ -3,7 +3,7 @@ import Title 	from './components/Title';
 import Control 	from './components/Control';
 import Form 	from './components/Form';
 import List 	from './components/List';
-import {filter, includes, orderBy as funcOrderBy, remove} from "lodash";
+import {filter, includes, orderBy as funcOrderBy, remove, reject} from "lodash";
 import tasks 	from './mocks/tasks';
 const { v4: uuidv4 } = require('uuid');
 class App extends Component{
@@ -30,7 +30,8 @@ class App extends Component{
 
 	handleToggleForm(){
 		this.setState({
-			isShowForm : !this.state.isShowForm
+			isShowForm 		: !this.state.isShowForm,
+			itemSelected	: null
 		})
 	}
 
@@ -74,11 +75,18 @@ class App extends Component{
 	}
 
 	handleSubmit(item){
-		console.log(item);
-
+		// console.log(item);
 		let {items} = this.state;
+		let id = '';
+		if (item.id !== '') { //edit
+			items = reject(items, { id: item.id});
+			id 	  = item.id;
+		} else { //add
+			id = uuidv4();
+		}
+		
 		items.push({
-			id		: uuidv4(),
+			id 		: id,
 			name	: item.name,
 			level	: +item.level
 		});

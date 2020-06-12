@@ -4,15 +4,37 @@ class Form extends Component{
 		super(props);
 	
 		this.state = {
-			task_name: '',
-			task_level: 0
-
+			task_id		: '',
+			task_name	: '',
+			task_level	: 0
 		};
 		
 		this.handleCancel = this.handleCancel.bind(this);
 		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);		
+		this.handleSubmit = this.handleSubmit.bind(this);
 	};
+
+	componentWillMount(){
+		let item  = this.props.itemSelected;
+		if (item !== null) {
+			this.setState({
+				task_id		: item.id,
+				task_name	: item.name,
+				task_level	: item.level
+			});
+		}
+	}
+
+	componentWillReceiveProps(nextProps){
+		let item = nextProps.itemSelected;
+		if (nextProps !== null) {
+			this.setState({
+				task_id		: item.id,
+				task_name	: item.name,
+				task_level	: item.level
+			});
+		}
+	}
 
 	handleCancel(){
 		this.props.onClickCancel();
@@ -34,15 +56,16 @@ class Form extends Component{
 		// console.log(this.state);
 
 		let item = {
+			id: this.state.task_id,
 			name: this.state.task_name,
 			level: this.state.task_level
 		}
 
 		this.props.onClickSubmit(item);
 		event.preventDefault();
-	};
+	}
 
-	render(){	
+	render(){
 		return(
 			<div className="row">
 				<div className="col-md-offset-7 col-md-5">
