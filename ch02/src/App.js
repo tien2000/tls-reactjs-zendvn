@@ -4,14 +4,14 @@ import Control 	from './components/Control';
 import Form 	from './components/Form';
 import List 	from './components/List';
 import {filter, includes, orderBy as funcOrderBy, remove, reject} from "lodash";
-import tasks 	from './mocks/tasks';
+// import tasks 	from './mocks/tasks';
 const { v4: uuidv4 } = require('uuid');
 class App extends Component{
 	constructor(props){
 		super(props);
 	
 		this.state = {
-			items 			: tasks,
+			items 			: [],
 			isShowForm  	: false,
 			strSearch   	: '',
 			orderBy			: 'name',
@@ -26,6 +26,13 @@ class App extends Component{
 		this.handleDelete 		= this.handleDelete.bind(this);
 		this.handleSubmit 		= this.handleSubmit.bind(this);
 		this.handleEdit 		= this.handleEdit.bind(this);
+	}
+
+	componentWillMount(){
+		let items = JSON.parse(localStorage.getItem('tasks'));
+		this.setState({
+			items : items
+		});
 	}
 
 	handleToggleForm(){
@@ -63,6 +70,8 @@ class App extends Component{
 		this.setState({
 			items: items
 		});
+
+		localStorage.setItem('tasks', JSON.stringify(items));
 	}
 
 	handleEdit(item){
@@ -70,8 +79,7 @@ class App extends Component{
 			itemSelected	: item,
 			isShowForm  	: true
 		});
-		console.log(item);
-		
+		console.log(item);		
 	}
 
 	handleSubmit(item){
@@ -95,6 +103,8 @@ class App extends Component{
 			items : items,
 			isShowForm: false
 		});
+
+		localStorage.setItem('tasks', JSON.stringify(items));
 	}
 	
 	render(){
