@@ -38,7 +38,7 @@ class App extends Component{
 	}
 
 	UNSAFE_componentWillMount(){
-		let items = JSON.parse(localStorage.getItem('tasks'));
+		let items = JSON.parse(localStorage.getItem('tasks')) || [];
 		this.setState({
 			items : items
 		});
@@ -120,7 +120,7 @@ class App extends Component{
 		// console.log('strSearch: ' + this.state.strSearch);
 				
 		let elmForm 	 = null;
-		let itemsOrigin  = [...this.state.items];
+		let itemsOrigin  = (this.state.items != null) ? [...this.state.items] : [];
 		let items 		 = [];
 		let {isShowForm, strSearch, orderBy, orderDir, itemSelected} = this.state;
 
