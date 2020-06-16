@@ -22,7 +22,7 @@ class Control extends Component{
 
 		let elmBtn = <button onClick={this.handleAdd} type="button" className="btn btn-info btn-block"> Add Task </button>;
 		if (this.props.isShowForm === true) {
-			elmBtn = <button onClick={this.handleAdd} type="button" className="btn btn-danger btn-block"> Close Form </button>;
+			elmBtn = <button onClick={this.handleAdd} type="button" className="btn btn-success btn-block"> Close Form </button>;
 		}
 
 		return(

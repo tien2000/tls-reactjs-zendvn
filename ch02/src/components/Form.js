@@ -12,10 +12,10 @@ class Form extends Component{
 		this.handleCancel = this.handleCancel.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.updateItem   = this.updateItem.bind(this);
 	};
 
-	componentWillMount(){
-		let item  = this.props.itemSelected;
+	updateItem(item){
 		if (item !== null) {
 			this.setState({
 				task_id		: item.id,
@@ -25,15 +25,12 @@ class Form extends Component{
 		}
 	}
 
-	componentWillReceiveProps(nextProps){
-		let item = nextProps.itemSelected;
-		if (nextProps !== null) {
-			this.setState({
-				task_id		: item.id,
-				task_name	: item.name,
-				task_level	: item.level
-			});
-		}
+	UNSAFE_componentWillMount(){
+		this.updateItem(this.props.itemSelected);
+	}
+
+	UNSAFE_componentWillReceiveProps(nextProps){		
+		this.updateItem(nextProps.itemSelected);
 	}
 
 	handleCancel(){

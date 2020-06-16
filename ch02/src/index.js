@@ -6,10 +6,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-    {/* <StudyForm /> */}
-  </React.StrictMode>,
+  // <React.StrictMode>
+    <App />,
+  // </React.StrictMode>
   document.getElementById('main-content')
 );
 

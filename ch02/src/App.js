@@ -7,35 +7,44 @@ import {filter, includes, orderBy as funcOrderBy, remove, reject} from "lodash";
 // import tasks 	from './mocks/tasks';
 const { v4: uuidv4 } = require('uuid');
 class App extends Component{
+	state = {
+		items 			: [],
+		isShowForm  	: false,
+		strSearch   	: '',
+		orderBy			: 'name',
+		orderDir		: 'asc',
+		itemSelected	: null
+	};
+
 	constructor(props){
 		super(props);
 	
-		this.state = {
-			items 			: [],
-			isShowForm  	: false,
-			strSearch   	: '',
-			orderBy			: 'name',
-			orderDir		: 'asc',
-			itemSelected	: null
-		};
+		// this.state = {
+		// 	items 			: [],
+		// 	isShowForm  	: false,
+		// 	strSearch   	: '',
+		// 	orderBy			: 'name',
+		// 	orderDir		: 'asc',
+		// 	itemSelected	: null
+		// };
 
-		this.handleToggleForm 	= this.handleToggleForm.bind(this);
+		// this.handleToggleForm 	= this.handleToggleForm.bind(this);
 		this.closeForm 			= this.closeForm.bind(this);
 		this.handleSearch 		= this.handleSearch.bind(this);
-		this.handleSort 		= this.handleSort.bind(this);
+		// this.handleSort 		= this.handleSort.bind(this);
 		this.handleDelete 		= this.handleDelete.bind(this);
 		this.handleSubmit 		= this.handleSubmit.bind(this);
 		this.handleEdit 		= this.handleEdit.bind(this);
 	}
 
-	componentWillMount(){
+	UNSAFE_componentWillMount(){
 		let items = JSON.parse(localStorage.getItem('tasks'));
 		this.setState({
 			items : items
 		});
 	}
 
-	handleToggleForm(){
+	handleToggleForm = () => {
 		this.setState({
 			isShowForm 		: !this.state.isShowForm,
 			itemSelected	: null
@@ -54,7 +63,7 @@ class App extends Component{
 		})
 	}
 
-	handleSort(orderBy, orderDir){
+	handleSort = (orderBy, orderDir) => {
 		this.setState({
 			orderBy : orderBy,
 			orderDir: orderDir
@@ -79,7 +88,7 @@ class App extends Component{
 			itemSelected	: item,
 			isShowForm  	: true
 		});
-		console.log(item);		
+		// console.log(item);		
 	}
 
 	handleSubmit(item){
