@@ -1,6 +1,6 @@
-const isShowForm = false;
+const defaultState = false;
 
-const isShowFormReducer = (state = isShowForm, action) => {
+const isShowForm = (state = defaultState, action) => {
     switch (action.type) {
         case 'CLOSE_FORM':
             state = false;
@@ -16,4 +16,4 @@ const isShowFormReducer = (state = isShowForm, action) => {
     }
 }
 
-export default isShowFormReducer;
+export default isShowForm;

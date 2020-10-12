@@ -1,6 +1,6 @@
 const defaultState = {orderBy: "name", orderDir: "asc"};
 
-const sortReducer = (state = defaultState, action) => {
+const sort = (state = defaultState, action) => {
     let {orderBy, orderDir} = action;
 
     switch (action.type) {
@@ -11,4 +11,4 @@ const sortReducer = (state = defaultState, action) => {
     }
 }
 
-export default sortReducer;
+export default sort;
